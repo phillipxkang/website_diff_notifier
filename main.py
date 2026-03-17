@@ -15,7 +15,7 @@ REDIS_URL = os.getenv("REDIS_URL", "redis://redis:6379/0")
 app = Celery("diff_checker", broker=REDIS_URL)
 app.conf.beat_schedule = {
     'check-every-10-minutes': {
-        'task': 'tasks.check_website',
+        'task': 'main.check_website',
         'schedule': 600.0,
         'args': ('https://example.com',)
     },
